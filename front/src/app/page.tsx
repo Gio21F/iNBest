@@ -25,7 +25,7 @@ export default function Home() {
 
   if(isLoading) return <Loading width="100px" height="100px" />
   else return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-2 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 p-4 row-start-2 items-center sm:items-start">
         <h1 className="text-3xl font-semibold"> Hola { user?.name }</h1>
         {/* Opciones */}
@@ -39,6 +39,9 @@ export default function Home() {
           <button onClick={() => setCurrentOption(3)}>
             <p className={`py-2 underline text-start hover:text-indigo-500 ${ currentOption === 3 ? 'text-indigo-500' : ''}`}>Funcionalidades</p>
           </button>
+          <button 
+            className="py-2 underline text-start hover:text-indigo-500"
+            onClick={logout}> Cerrar session </button>
         </div>
         {/* End Opciones */}
 
@@ -55,13 +58,13 @@ export default function Home() {
                 {/* Funcionalidades */}
                 <div className="gap-2 flex flex-wrap">
                   <button 
-                    className={`w-36 rounded-lg bg-transparent font-semibold border-2 border-indigo-600 p-2 hover:bg-indigo-500 ${ currentForm === 1 ? 'bg-indigo-500' : '' }`}
+                    className={`w-36 rounded-lg font-semibold border-2 border-indigo-600 p-2 hover:bg-indigo-500 ${ currentForm === 1 ? 'bg-indigo-950' : 'bg-transparent' }`}
                     onClick={() => setCurrentForm(1)}>Blur</button>
                   <button 
-                    className={`w-36 rounded-lg bg-transparent font-semibold border-2 border-indigo-600 p-2 hover:bg-indigo-500 ${ currentForm === 2 ? 'bg-indigo-500' : '' }`}
+                    className={`w-36 rounded-lg font-semibold border-2 border-indigo-600 p-2 hover:bg-indigo-500 ${ currentForm === 2 ? 'bg-indigo-950' : 'bg-transparent' }`}
                     onClick={() => setCurrentForm(2)}>Resize</button>
                   <button 
-                    className={`w-36 rounded-lg bg-transparent font-semibold border-2 border-indigo-600 p-2 hover:bg-indigo-500 ${ currentForm === 3 ? 'bg-indigo-500' : '' }`}
+                    className={`w-36 rounded-lg font-semibold border-2 border-indigo-600 p-2 hover:bg-indigo-500 ${ currentForm === 3 ? 'bg-indigo-950' : 'bg-transparent' }`}
                     onClick={() => setCurrentForm(3)}>GrayScale</button>
                 </div>
                 {/* End Funcionalidades */}
@@ -84,10 +87,6 @@ export default function Home() {
                 return <p>Selecciona un formulario</p>;
             }
           })()}
-        </div>
-  
-        <div className="w-full flex justify-end">
-          <button onClick={logout}> Cerrar session </button>
         </div>
       </main>
     </div>
